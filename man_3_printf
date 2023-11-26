@@ -1,0 +1,103 @@
+.TH printf 3 "November 26 2023" "GNU" "Printf Man Page"
+.SH NAME
+.B _printf
+\- Custom implementation of printf function. 
+.br
+It replicates basic functionality of printf() function, excluding format specifiers like %o and %x
+
+.SH LIBRARY
+_printf uses the following C standard libraries 
+.br
+<stdarg.h> <stdlib.h> <unistd.h> <ctype.h> <limits.h>
+
+.SH SYNOPSIS
+.B
+#include "main.h"
+_printf FORMAT [ARGUMENT...]
+.LP
+.B
+int printf(const char *format, ...);
+
+.SH DESCRIPTION
+.LP
+In the C programming language, printf() function is used to print character, string, float, integer, octal, and hexadecimal values to the standard output.
+.PP
+Our_printf function is a custom implementation that mimics the basic functionalities of the standard printf(). It works in the same way, using variadic functions with a format string as a parameter.
+
+.SH CONVERSION SPECIFIERS
+.br
+.B
+The conversion specifiers and their meanings are :
+.TP
+.B \-d
+\- Convert the int argument to decimal notation.
+.TP
+.B \-i
+\- Convert the int argument to integer notation.
+.TP
+.B \-c
+\- Convert the int argument to a char, and write the resulting character.
+.TP
+.B \-s
+\- Write the characters from the string argument up to the null character ('\0') (not included).
+
+.SH RETURN VALUE
+.LP
+Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+.PP
+In other words, the custom-made function returns -1 upon error and (null) if a string argument is NULL.
+
+.SH FORMAT OF THE FORMAT STRING
+.LP
+The format string is a character string, beginning and ending in its initial shift state, if any.
+.PP
+The format string is composed of zero or more directives: ordinary characters (not %), which are copied unchanged to the output stream, and conversion specifications, each of which results in fetching zero or more subsequent arguments.
+.PP
+Each conversion specification is introduced by the character %, and ends with a conversion specifier. In between there may be (in this order) zero or more flags, an optional minimum field width, an optional precision, and an optional length modifier.
+
+.SH FLAGS
+.LP
+Our custom-made function DOES NOT handle flag characters, field width, precision, and length modifiers.
+
+.SH EXAMPLES
+.PP
+Print a string.
+.B
+.IP
+.B printf("Hello, World !\n");
+.LP
+Hello, World !
+.IP
+.B printf("%s\n", "Hello, World !");
+.LP
+Hello, World !
+
+.PP
+Print char.
+.B
+.IP
+.B printf("Character:[%c]\n", 'H');
+.LP
+Character:[H]
+
+.PP
+Print integer.
+.B
+.IP
+.B printf("%d, %i\n", 2, 5);
+.LP
+2, 5
+
+.SH BUGS
+.LP
+We are not aware of any bugs at this time.
+
+.SH AUTHORS
+.LP
+BELES Laetitia - Holberton School Student - C22
+.br
+IDRISSI Sarah - Holberton School Student - C22
+
+.SH COPYRIGHT
+.LP
+Copyright © 2023 Holberton School Lille
